@@ -3,17 +3,16 @@
 
 #include <QGLViewer/frame.h>
 
-class Ray
-{
-public :
+class Ray {
+public:
   Ray();
   Ray(const qglviewer::Vec start, const qglviewer::Vec dir);
 
   qglviewer::Vec start() const { return start_; }
   qglviewer::Vec direction() const { return direction_; }
 
-  void setStart(const qglviewer::Vec& start) { start_ = start; }
-  void setDirection(const qglviewer::Vec& direction);
+  void setStart(const qglviewer::Vec &start) { start_ = start; }
+  void setDirection(const qglviewer::Vec &direction);
 
   void draw() const;
 

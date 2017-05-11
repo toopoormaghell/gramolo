@@ -3,12 +3,11 @@
 
 #include "object.h"
 
-class Sphere : public Object
-{
-public :
+class Sphere : public Object {
+public:
   // Set default parameters. Radius is 1.0, position is 0,0,0.
   Sphere();
-  virtual ~Sphere() {};
+  virtual ~Sphere(){};
 
   // Accesseurs
   float radius() const { return radius_; }
@@ -16,9 +15,9 @@ public :
 
   virtual void draw() const;
   virtual float boundingRadius() const { return radius(); }
-  virtual bool intersect(const Ray&, Hit& hit) const;
+  virtual bool intersect(const Ray &, Hit &hit) const;
 
-  virtual void initFromDOMElement(const QDomElement& e);
+  virtual void initFromDOMElement(const QDomElement &e);
 
 private:
   float radius_;

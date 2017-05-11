@@ -1,13 +1,12 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
+#include "color.h"
 #include <QGLViewer/vec.h>
 #include <qimage.h>
-#include "color.h"
 
-class Material
-{
-public :
+class Material {
+public:
   Material();
 
   enum TextureMode { MODULATE, BLEND, REPLACE };
@@ -20,20 +19,35 @@ public :
   float textureScaleU() const { return textureScaleU_; }
   float textureScaleV() const { return textureScaleV_; }
   TextureMode textureMode() const { return textureMode_; }
-  const QImage& texture() const { return texture_; }
+  const QImage &texture() const { return texture_; }
 
-  void setDiffuseColor(const Color& dc) { diffuseColor_ = dc; }
-  void setSpecularColor(const Color& specularColor) { specularColor_ = specularColor; }
-  void setReflectiveColor(const Color& reflectiveColor) { reflectiveColor_ = reflectiveColor; }
-  void setSpecularCoefficient(float specularCoefficient) { specularCoefficient_ = specularCoefficient; }
-  void setTexture(const QImage& texture) { texture_ = texture; }
-  void loadTextureFromFile(const QString& fileName);
-  void setTextureScale(float textureScale) { setTextureScaleU(textureScale); setTextureScaleV(textureScale); }
-  void setTextureScaleU(float textureScaleU) { if (fabs(textureScaleU) > 1e-3) textureScaleU_ = textureScaleU; }
-  void setTextureScaleV(float textureScaleV) { if (fabs(textureScaleV) > 1e-3) textureScaleV_ = textureScaleV; }
+  void setDiffuseColor(const Color &dc) { diffuseColor_ = dc; }
+  void setSpecularColor(const Color &specularColor) {
+    specularColor_ = specularColor;
+  }
+  void setReflectiveColor(const Color &reflectiveColor) {
+    reflectiveColor_ = reflectiveColor;
+  }
+  void setSpecularCoefficient(float specularCoefficient) {
+    specularCoefficient_ = specularCoefficient;
+  }
+  void setTexture(const QImage &texture) { texture_ = texture; }
+  void loadTextureFromFile(const QString &fileName);
+  void setTextureScale(float textureScale) {
+    setTextureScaleU(textureScale);
+    setTextureScaleV(textureScale);
+  }
+  void setTextureScaleU(float textureScaleU) {
+    if (fabs(textureScaleU) > 1e-3)
+      textureScaleU_ = textureScaleU;
+  }
+  void setTextureScaleV(float textureScaleV) {
+    if (fabs(textureScaleV) > 1e-3)
+      textureScaleV_ = textureScaleV;
+  }
   void setTextureMode(TextureMode textureMode) { textureMode_ = textureMode; }
 
-  void initFromDOMElement(const QDomElement& e);
+  void initFromDOMElement(const QDomElement &e);
 
 private:
   Color diffuseColor_, specularColor_, reflectiveColor_;
